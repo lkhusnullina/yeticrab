@@ -1,7 +1,9 @@
 import { CirclePlus } from "@gravity-ui/icons";
-import { Button, Modal, Switch } from "@gravity-ui/uikit";
+import { Button, Icon, Modal, Switch, Text } from "@gravity-ui/uikit";
 import { useState } from "react";
 import Form from "../Form/Form";
+import styles from "../Admin/Admin.module.scss"
+import { useAppSelector } from "../../hooks";
 
 interface AdminProps {
   isAdmin: boolean;
@@ -9,33 +11,35 @@ interface AdminProps {
 }
 
 const Admin: React.FC<AdminProps> = ({ isAdmin, setIsAdmin }) => {
-  
   const [open, setOpen] = useState(false);
-
-  
+  const count = useAppSelector(state => state.places.place);
   return (
     <div>
-      <div className="header">
+      <div className={styles.admin__header}>
         <Switch
-          className="switch"
           size="l"
           checked={isAdmin}
           onChange={() => setIsAdmin((prev) => !prev)}
         >
           Режим администратора
         </Switch>
+        <Text color="primary">Общее количество {count.length}</Text>
+
         {isAdmin && (
-          <div>
-            <Button className="button__header" onClick={() => setOpen(true)}>
-              <CirclePlus />
-              Добавить
-            </Button>
-          </div>
+          <Button
+            view="outlined-action"
+            size="l"
+            className={styles.admin__button}
+            onClick={() => setOpen(true)}
+          >
+            <Icon data={CirclePlus} size={18} />
+            Добавить
+          </Button>
         )}
       </div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="create__block">
-          <Form onClose={() => setOpen(false)}/>
+          <Form onClose={() => setOpen(false)} />
         </div>
       </Modal>
     </div>

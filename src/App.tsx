@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div className="container">
         <Admin isAdmin={isAdmin} setIsAdmin={setIsAdmin}></Admin>
-        <TablePlace isAdmin={isAdmin} />
+        <TablePlace isAdmin={isAdmin}/>
       </div>
     </div>
   );

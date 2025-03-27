@@ -4,25 +4,8 @@
   box-sizing: border-box;
 }
 
-/* .App {
-  text-align: center;
-} */
-
 .container {
-  width: 1200px;
+  width: 1320px;
   padding: 0;
   margin: 20px auto;
-}
-
-.header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.button__header { 
-  display: flex;
 }

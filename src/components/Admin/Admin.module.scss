@@ -1,0 +1,13 @@
+.admin {
+  &__header {
+    height: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__button{ 
+    display: flex;
+  }
+}
