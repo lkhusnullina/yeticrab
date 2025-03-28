@@ -19,7 +19,10 @@ const ViewPlace: React.FC<ViewPlaceProps> = ({ initialData, onClose }) => {
         <Text color="primary">{initialData.description}</Text>
         <Text color="primary">Дата и время добавления: {initialData.date}</Text>
         <Text color="primary">Рейтинг: {initialData.rating}</Text>
-        <Text color="primary">{initialData.place}</Text>
+        <Text color="primary">Адрес: {initialData.place}</Text>
+        <Text color="primary">Координаты: {initialData.latitude}, {initialData.longitude}</Text> 
+       
+         {/* <Text color="primary">На карте: {initialData.coordinates}</Text> */}
       </div>
 
       <img

@@ -16,7 +16,8 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
   const [rating, setRating] = useState("1");
   const [image, setImage] = useState("");
   const [place, setPlace] = useState("");
-  
+  const [latitude, setLatitude] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(0);
 
   useEffect(() => {
     if (initialData) {
@@ -25,22 +26,38 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
       setImage(initialData.image ?? "");
       setPlace(initialData.place ?? "");
       setRating(initialData.rating ?? "");
+      setLatitude(initialData.latitude ?? 0);
+      setLongitude(initialData.longitude ?? 0);
     }
   }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (initialData) {
-      dispatch(updatePlace({ ...initialData, name, description, image, rating, date: new Date().toLocaleDateString("ru-RU") }));
+      dispatch(
+        updatePlace({
+          ...initialData,
+          name,
+          description,
+          date: new Date().toLocaleDateString("ru-RU"),
+          rating,
+          image,
+          place,
+          latitude,
+          longitude,
+        })
+      );
     } else {
       const newPlace = {
         id: Date.now(),
         name,
         description,
+        date: new Date().toLocaleDateString("ru-RU"),
         rating: rating.toString(),
         image,
         place,
-        date: new Date().toLocaleDateString("ru-RU"),
+        latitude,
+        longitude,
       };
       dispatch(addPlace(newPlace));
     }
@@ -50,6 +67,8 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
     setImage("");
     setPlace("");
     setRating("");
+    setLatitude(0);
+    setLongitude(0);
   };
 
   return (
@@ -68,10 +87,11 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
         rows={6}
       />
       <Select
+        label="Рейтинг"
         value={[rating]}
         placeholder="Рейтинг"
-        size="l" 
-        onUpdate={(vals: string[]) => setRating(vals[0])} 
+        size="l"
+        onUpdate={(vals: string[]) => setRating(vals[0])}
         options={[
           { value: "1", content: "1" },
           { value: "2", content: "2" },
@@ -92,11 +112,28 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
         placeholder="Месторасположение"
         size="l"
       />
-
+       <TextInput
+        label="Широта"
+        type="number"
+        value={latitude.toString()}
+        onChange={(e) => setLatitude(parseFloat(e.target.value) || 0)}
+        placeholder="Укажите широту"
+        size="l"
+      />
+      <TextInput
+        label="Долгота"
+        type="number"
+        value={longitude.toString()}
+        onChange={(e) => setLongitude(parseFloat(e.target.value) || 0)}
+        placeholder="Укажите долготу"
+        size="l"
+      />
       <Button view="action" type="submit" size="l">
         {initialData ? "Обновить" : "Создать"}
       </Button>
-      <Button onClick={onClose} view="outlined-warning" size="l">Закрыть</Button>
+      <Button onClick={onClose} view="outlined-warning" size="l">
+        Закрыть
+      </Button>
     </form>
   );
 };

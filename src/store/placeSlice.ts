@@ -9,6 +9,8 @@ export interface Item {
   image?: string;
   place?: string;
   status?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface ItemState {
@@ -18,37 +20,32 @@ export interface ItemState {
 const place: Item[] = [
   {
     id: 1,
-    name: "Старый вокзал",
-    description: "Когда-то именно это здание было",
-    date: "01.01.2025, 12:00",
-    rating: "3",
+    name: "Храм на Крови",
+    description: "В самом центре уральской столицы недалеко от Вознесенской горки величественно возвышается Храма на Крови. Его возвели там, где раньше стоял Ипатьевский дом, в котором в ночь на 17 июля 1918 года расстреляли последнего императора России Николая II, его супругу Александру Федоровну, юного сына Алексея, четырех дочерей и слуг. Сегодня памятник последним в роду Романовых, запечатленным перед казнью, можно увидеть у входа в храм.",
+    date: "20.03.2025, 12:00",
+    rating: "5",
     image:
-      "https://avatars.dzeninfra.ru/get-zen_doc/28064/pub_5ff2f026bb14d54ffb7beb1b_62bb184183c24f3fef071049/scale_1200",
-    place: "г. Екатеринбург, ул. Вокзальная, 14.",
+      "https://avatars.mds.yandex.net/i?id=ab7b19c1242610e0c57d0c9f99624240_l-5270099-images-thumbs&n=13",
+    place: "г. Екатеринбург, ул. Царская, 10",
+    // coordinates: "56.844509, 60.608877",
+    latitude: 56.844509,
+    longitude: 60.608877,
     status: "осмотрена",
   },
   {
     id: 2,
-    name: "Старый вокзал",
-    description: "Когда-то именно это здание",
-    date: "01.01.2025, 12:00",
-    rating: "3",
-    image:
-      "https://avatars.dzeninfra.ru/get-zen_doc/28064/pub_5ff2f026bb14d54ffb7beb1b_62bb184183c24f3fef071049/scale_1200",
-    place: "г. Екатеринбург, ул. Вокзальная, 14.",
-    status: "осмотрена",
-  },
-  {
-    id: 3,
-    name: "Старый вокзал",
-    description: "Когда-то именно это здание",
-    date: "01.01.2025, 12:00",
+    name: "Дом Севастьянова",
+    description: "Сказочный малахитовый терем стоит совсем рядом с плотиной, возле набережной Исети. Нарядный особняк был построен в XIX веке и назван в честь одного из владельцев — российского предпринимателя и хозяина золотых приисков Николая Севастьянова.",
+    date: "20.03.2025, 12:05",
     rating: "5",
     image:
-      "https://avatars.dzeninfra.ru/get-zen_doc/28064/pub_5ff2f026bb14d54ffb7beb1b_62bb184183c24f3fef071049/scale_1200",
-    place: "г. Екатеринбург, ул. Вокзальная, 14.",
+      "https://extraguide.ru/images/sp/ce78398f00f19a03f5afa52ee062791213f84b8e.jpg",
+    place: "г. Екатеринбург, Проспект Ленина, 35",
+    latitude: 56.839408,
+    longitude: 60.606557,
+    // coordinates: "56.839408, 60.606557",
     status: "осмотрена",
-  },
+  }
 ];
 
 const initialState: ItemState = {

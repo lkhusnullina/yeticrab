@@ -1,4 +1,4 @@
-import { Modal, Table, Text, Select } from "@gravity-ui/uikit";
+import { Modal, Table, Text, Select, Link } from "@gravity-ui/uikit";
 import { Eye, Pencil, TrashBin } from "@gravity-ui/icons";
 import styles from "../TablePlace/TablePlace.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -26,6 +26,13 @@ export const TablePlace: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
   const handleView = (item: Item) => {
     setSelectItem(item);
     setViewOpen(true);
+  };
+
+  const generateCoordinate = (latitude?: number, longitude?: number) => {
+    if (latitude && longitude) {
+      return `https://www.google.com/maps?q=${latitude},${longitude}`;
+    }
+    return "#";
   };
 
   const columns = [
@@ -79,8 +86,29 @@ export const TablePlace: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
         </Text>
       ),
     },
-    // { id: "coordinates", name: "Координаты", template: (item: Item) => <Text ellipsisLines={3} ellipsis={true} word-break="break-all">{item.coordinates}</Text> },
-    { id: "link", name: "Ссылка" },
+    {
+      id: "coordinates",
+      name: "Координаты",
+      template: (item: Item) => (
+        <Text ellipsisLines={4} ellipsis={true} word-break="break-all">
+          {item.latitude} {item.longitude}
+        </Text>
+      ),
+    },
+    {
+      id: "link",
+      name: "Карта",
+      template: (item: Item) => (
+        <Link
+          view="normal"
+          href={generateCoordinate(item.latitude, item.longitude)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Открыть карту
+        </Link>
+      ),
+    },
     {
       id: "status",
       name: "Статус",
