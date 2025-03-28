@@ -1,46 +1,51 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Прототип системы для планирования посещения достопримечательностей в виде web-приложения
 
-## Available Scripts
+### Функционал
+Прототип включает в себя вывод таблицы достопримечательностей, счетчик
+достопримечательностей.
+Есть возможность перейти в режим администратора (без авторизации), где есть возможность просмотра, редактирования
+и удаления достопримечательностей, а также создания новых
+достопримечательностей
 
-In the project directory, you can run:
+### Технологии: 
+React, redux, typescript, gravity ui
 
-### `npm start`
+### Деплой проекта
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+#### Запуск проекта
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Скачайте архив проекта или склонируйте репозиторий
 
-### `npm run build`
+```sh
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Установите зависимости проекта
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+npm install
+```
+#### Запустите проект командой
 
-### `npm run eject`
+```sh
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![image](https://github.com/user-attachments/assets/678b28ab-6266-41ae-bda3-18a9ceaff282)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Документация к REST API
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Базовый URL api/v1/
+#### Эндпоинты: 
+1. Получение списка достопримечательностей [GET] /places
+    Возвращает массив достопримечательностей IPlace[] (структура принимаемых полей описана в models/IPlace.ts)
+2. Создание достопримечательности [POST] /places
+    Предполагается, что передается упращенная структура IPlace без id, date, rating. id и date генерируются бэкендом, rating – предполагется высчитываемым полем на основе пользовательских оценок. Запрос возвращает заполненную структуру IPlace.
+3. Обновление достопримечательности [PUT] /places/{id}
+    Передаю обновленную структуру IPlace
+4. Удаление достопримечательности [DELETE] /places/{id}
+    Удаляю  структуру IPlace
