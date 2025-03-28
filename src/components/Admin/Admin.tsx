@@ -1,7 +1,7 @@
 import { CirclePlus } from "@gravity-ui/icons";
 import { Button, Icon, Modal, Switch, Text } from "@gravity-ui/uikit";
 import { useState } from "react";
-import Form from "../Form/Form";
+import Form from "../FormPlace/FormPlace";
 import styles from "../Admin/Admin.module.scss"
 import { useAppSelector } from "../../hooks";
 

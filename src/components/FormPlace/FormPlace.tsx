@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Button, Select, TextArea, TextInput } from "@gravity-ui/uikit";
 import { useAppDispatch } from "../../hooks";
-import { addPlace, Item, updatePlace } from "../../store/placeSlice";
-import styles from "../Form/Form.module.scss";
+import { IPlace } from "../../models/IPlace";
+import { addPlace, updatePlace } from "../../store/placeSlice";
+import styles from "../FormPlace/FormPlace.module.scss";
 
-interface FormProps {
-  initialData?: Item | null;
+interface FormPlaceProps {
+  initialData?: IPlace | null;
   onClose: () => void;
 }
 
-const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
+const FormPlace: React.FC<FormPlaceProps> = ({ initialData, onClose }) => {
   const dispatch = useAppDispatch();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [rating, setRating] = useState("1");
+  const [rating, setRating] = useState<number| null>(null);
   const [image, setImage] = useState("");
   const [place, setPlace] = useState("");
-  const [latitude, setLatitude] = useState<number>(0);
-  const [longitude, setLongitude] = useState<number>(0);
+  const [latitude, setLatitude] = useState<number| null>(null);
+  const [longitude, setLongitude] = useState<number| null>(null);
 
   useEffect(() => {
     if (initialData) {
@@ -25,39 +26,38 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
       setDescription(initialData.description ?? "");
       setImage(initialData.image ?? "");
       setPlace(initialData.place ?? "");
-      setRating(initialData.rating ?? "");
-      setLatitude(initialData.latitude ?? 0);
-      setLongitude(initialData.longitude ?? 0);
+      setRating(initialData.rating ?? null);
+      setLatitude(initialData.latitude ?? null);
+      setLongitude(initialData.longitude ?? null);
     }
   }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!name) return;
+
     if (initialData) {
       dispatch(
         updatePlace({
           ...initialData,
           name,
           description,
-          date: new Date().toLocaleDateString("ru-RU"),
-          rating,
+          rating: rating || 1,
           image,
           place,
-          latitude,
-          longitude,
+          latitude: latitude || undefined,
+          longitude: longitude || undefined,
         })
       );
     } else {
       const newPlace = {
-        id: Date.now(),
         name,
         description,
-        date: new Date().toLocaleDateString("ru-RU"),
-        rating: rating.toString(),
+        rating:rating || 0,
         image,
         place,
-        latitude,
-        longitude,
+        latitude: latitude || undefined,
+        longitude: longitude || undefined,
       };
       dispatch(addPlace(newPlace));
     }
@@ -66,9 +66,14 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
     setDescription("");
     setImage("");
     setPlace("");
-    setRating("");
-    setLatitude(0);
-    setLongitude(0);
+    setRating(null);
+    setLatitude(null);
+    setLongitude(null);
+
+  };
+
+  const handleRatingChange = (value: string[]) => {
+    setRating(value[0] ? parseInt(value[0]) : null);
   };
 
   return (
@@ -78,6 +83,7 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
         onChange={(e) => setName(e.target.value)}
         placeholder="Название"
         size="l"
+        validationState={!name ? "invalid" : undefined}
       />
 
       <TextArea
@@ -86,12 +92,12 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
         placeholder="Описание"
         rows={6}
       />
-      <Select
+      {initialData?.rating && <Select
         label="Рейтинг"
-        value={[rating]}
+        value={rating ? [rating.toString()] : []}
         placeholder="Рейтинг"
         size="l"
-        onUpdate={(vals: string[]) => setRating(vals[0])}
+        onUpdate={handleRatingChange}
         options={[
           { value: "1", content: "1" },
           { value: "2", content: "2" },
@@ -99,7 +105,7 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
           { value: "4", content: "4" },
           { value: "5", content: "5" },
         ]}
-      />
+      />}
       <TextInput
         value={image}
         onChange={(e) => setImage(e.target.value)}
@@ -113,18 +119,16 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
         size="l"
       />
        <TextInput
-        label="Широта"
         type="number"
-        value={latitude.toString()}
-        onChange={(e) => setLatitude(parseFloat(e.target.value) || 0)}
+        value={latitude?.toString() || ""}
+        onChange={(e) => setLatitude(parseFloat(e.target.value) || null)}
         placeholder="Укажите широту"
         size="l"
       />
       <TextInput
-        label="Долгота"
         type="number"
-        value={longitude.toString()}
-        onChange={(e) => setLongitude(parseFloat(e.target.value) || 0)}
+        value={longitude?.toString() || ""}
+        onChange={(e) => setLongitude(parseFloat(e.target.value) || null)}
         placeholder="Укажите долготу"
         size="l"
       />
@@ -138,4 +142,4 @@ const Form: React.FC<FormProps> = ({ initialData, onClose }) => {
   );
 };
 
-export default Form;
+export default FormPlace;

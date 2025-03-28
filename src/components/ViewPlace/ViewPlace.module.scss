@@ -11,11 +11,8 @@
   &__info {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     font-size: 20px;
-  }
-  &__text {
-    font-size: 20px;
-    font-weight: bold;
   }
 
   &__img {
