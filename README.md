@@ -20,7 +20,7 @@ React, redux, typescript, gravity ui
 #### Скачайте архив проекта или склонируйте репозиторий
 
 ```sh
-
+git@github.com:lkhusnullina/yeticrab.git
 ```
 
 #### Установите зависимости проекта
