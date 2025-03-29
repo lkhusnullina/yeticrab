@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/lkhusnullina/yeticrab.git/static/css/main.3fcbc4e9.css",
-    "main.js": "/lkhusnullina/yeticrab.git/static/js/main.b5802529.js",
-    "static/js/453.3a5c54d6.chunk.js": "/lkhusnullina/yeticrab.git/static/js/453.3a5c54d6.chunk.js",
-    "index.html": "/lkhusnullina/yeticrab.git/index.html",
-    "main.3fcbc4e9.css.map": "/lkhusnullina/yeticrab.git/static/css/main.3fcbc4e9.css.map",
-    "main.b5802529.js.map": "/lkhusnullina/yeticrab.git/static/js/main.b5802529.js.map",
-    "453.3a5c54d6.chunk.js.map": "/lkhusnullina/yeticrab.git/static/js/453.3a5c54d6.chunk.js.map"
+    "main.css": "/lkhusnullina/yeticrab/static/css/main.3fcbc4e9.css",
+    "main.js": "/lkhusnullina/yeticrab/static/js/main.d9f2c091.js",
+    "static/js/453.3a5c54d6.chunk.js": "/lkhusnullina/yeticrab/static/js/453.3a5c54d6.chunk.js",
+    "index.html": "/lkhusnullina/yeticrab/index.html",
+    "main.3fcbc4e9.css.map": "/lkhusnullina/yeticrab/static/css/main.3fcbc4e9.css.map",
+    "main.d9f2c091.js.map": "/lkhusnullina/yeticrab/static/js/main.d9f2c091.js.map",
+    "453.3a5c54d6.chunk.js.map": "/lkhusnullina/yeticrab/static/js/453.3a5c54d6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3fcbc4e9.css",
-    "static/js/main.b5802529.js"
+    "static/js/main.d9f2c091.js"
   ]
 }
