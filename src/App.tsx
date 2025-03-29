@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./App.css";
 import { TablePlace } from "./components/TablePlace/TablePlace";
 import Admin from "./components/Admin/Admin";
+
+import "./App.css";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);

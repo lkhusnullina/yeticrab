@@ -5,7 +5,7 @@
 }
 
 .container {
-  width: 1320px;
+  max-width: 1320px;
   padding: 0;
   margin: 20px auto;
 }
