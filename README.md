@@ -13,7 +13,7 @@ React, redux, typescript, gravity ui
 
 ### Деплой проекта
 
-
+https://lkhusnullina.github.io/yeticrab/
 
 #### Запуск проекта
 
