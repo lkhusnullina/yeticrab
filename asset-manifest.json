@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/yeticrab/static/css/main.3fcbc4e9.css",
-    "main.js": "/yeticrab/static/js/main.1e6195b1.js",
+    "main.css": "/yeticrab/static/css/main.d35c82b1.css",
+    "main.js": "/yeticrab/static/js/main.538a1a40.js",
     "static/js/453.3a5c54d6.chunk.js": "/yeticrab/static/js/453.3a5c54d6.chunk.js",
     "index.html": "/yeticrab/index.html",
-    "main.3fcbc4e9.css.map": "/yeticrab/static/css/main.3fcbc4e9.css.map",
-    "main.1e6195b1.js.map": "/yeticrab/static/js/main.1e6195b1.js.map",
+    "main.d35c82b1.css.map": "/yeticrab/static/css/main.d35c82b1.css.map",
+    "main.538a1a40.js.map": "/yeticrab/static/js/main.538a1a40.js.map",
     "453.3a5c54d6.chunk.js.map": "/yeticrab/static/js/453.3a5c54d6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fcbc4e9.css",
-    "static/js/main.1e6195b1.js"
+    "static/css/main.d35c82b1.css",
+    "static/js/main.538a1a40.js"
   ]
 }
